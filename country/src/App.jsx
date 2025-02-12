@@ -1,11 +1,10 @@
-import React from "react";
-import Content from "./content";
+import React from 'react';
+import Header from "./components/header/Header";
 
 const App = () => {
   return (
     <div>
-      <h1>Recherche de Technologies</h1>
-      <Content />
+      <Header />
     </div>
   );
 };
