@@ -9,7 +9,7 @@ function App() {
         <NightDay /> {/* Utiliser le composant NightDay ici */}
       </header>
       <main>
-        <h2>Bienvenue dans l'application React !</h2>
+        <h2>Bienvenue dans lapplication React !</h2>
         <p>Changez entre le mode jour et nuit avec le bouton ci-dessus.</p>
       </main>
     </div>
