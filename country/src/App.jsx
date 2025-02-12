@@ -1,19 +1,13 @@
-import React from 'react';
-import './App.css';
-import NightDay from './Header/NightDay'; // Importer le composant NightDay
+import React from "react";
+import Content from "./content";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header>
-        <NightDay /> {/* Utiliser le composant NightDay ici */}
-      </header>
-      <main>
-        <h2>Bienvenue dans lapplication React !</h2>
-        <p>Changez entre le mode jour et nuit avec le bouton ci-dessus.</p>
-      </main>
+    <div>
+      <h1>Recherche de Technologies</h1>
+      <Content />
     </div>
   );
-}
+};
 
 export default App;

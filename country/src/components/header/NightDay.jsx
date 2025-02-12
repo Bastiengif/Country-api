@@ -1,37 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-// Composant NightDay pour gérer le changement de mode
-const NightDay = () => {
-  const [theme, setTheme] = useState('light');
+export default function DarkModeToggle() {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
 
-  // Vérifie si un thème est déjà défini dans localStorage au montage du composant
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-  }, []);
-
-  // Fonction pour basculer entre les modes
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme); // Sauvegarde le choix de l'utilisateur en local
-  };
-
-  // Appliquer la classe 'light' ou 'dark' au body
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+  }, [darkMode]);
 
   return (
-    <div className="NightDay">
-      <h1>Mode {theme === 'light' ? 'Jour' : 'Nuit'}</h1>
-      <button onClick={toggleTheme}>
-        Passer en mode {theme === 'light' ? 'Nuit' : 'Jour'}
+    <div className="flex justify-center items-center">
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="px-4 py-2 text-white w-auto inline-block mr-25"
+      >
+        {darkMode ? "Light" : "Dark"}
       </button>
     </div>
   );
-};
-
-export default NightDay;
+}
