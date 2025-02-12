@@ -16,12 +16,12 @@ export default function DarkModeToggle() {
   }, [darkMode]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+    <div className="flex justify-center items-center">
       <button
         onClick={() => setDarkMode(!darkMode)}
-        className="px-4 py-2 text-white bg-blue-500 dark:bg-gray-700 rounded-lg shadow-md"
+        className="px-4 py-2 text-white w-auto inline-block mr-25"
       >
-        {darkMode ? "Mode Clair" : "Mode Sombre"}
+        {darkMode ? "Light" : "Dark"}
       </button>
     </div>
   );
