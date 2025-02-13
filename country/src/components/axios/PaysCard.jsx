@@ -1,24 +1,28 @@
-import React from "react";
+import React from 'react';
 
 const PaysCard = ({ country }) => {
-  // Extraire le premier nom natif disponible
   const nativeName = country.name.nativeName
     ? Object.values(country.name.nativeName)[0].common
     : "N/A";
 
   return (
-    <div className="bg-gray-800 text-white p-4 rounded-lg shadow-lg w-85 text-center">
+    <div className="bg-slate-800 dark:bg-slate-900 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-72">
       <img 
         src={country.flags.png} 
-        alt={country.name.common} 
-        className="w-full h-50 object-cover rounded" 
+        alt={`Flag of ${country.name.common}`}
+        className="w-full h-40 object-cover rounded-lg shadow-md" 
       />
-      <h2 className="text-xl font-bold mt-2">
-        {country.name.common} <span className="text-gray-400 text-sm">({nativeName})</span>
-      </h2>
-      <p><strong>Population:</strong> {country.population.toLocaleString()}</p>
-      <p><strong>Region:</strong> {country.region}</p>
-      <p><strong>Capital:</strong> {country.capital?.[0] || "N/A"}</p>
+      <div className="mt-4">
+        <h2 className="text-xl font-bold">
+          {country.name.common}
+          <span className="block text-sm text-slate-400 mt-1">{nativeName}</span>
+        </h2>
+        <div className="mt-4 space-y-2 text-slate-300">
+          <p><span className="font-semibold">Population:</span> {country.population.toLocaleString()}</p>
+          <p><span className="font-semibold">Region:</span> {country.region}</p>
+          <p><span className="font-semibold">Capital:</span> {country.capital?.[0] || "N/A"}</p>
+        </div>
+      </div>
     </div>
   );
 };

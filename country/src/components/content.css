@@ -18,12 +18,18 @@
     margin-top: 10px;
   }
   
-  .result-list li {
-    padding: 5px;
+  .result-item {
+    padding: 8px;
     background: #f4f4f4;
     margin: 5px auto;
     width: 80%;
     max-width: 300px;
     border-radius: 5px;
+    text-align: center;
+  }
+  
+  .no-results {
+    color: red;
+    font-weight: bold;
   }
   

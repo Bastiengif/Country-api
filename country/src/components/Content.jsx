@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import "./content.css"; // Import du fichier CSS
+import React from "react";
+import "./content.css";
 
-const Content = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
+const Content = ({ searchTerm }) => {
   // Exemple de données à filtrer
   const items = ["React", "JavaScript", "HTML", "CSS", "Node.js", "Vue.js"];
 
@@ -14,14 +12,6 @@ const Content = () => {
 
   return (
     <div className="content-container">
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Rechercher..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
       <ul className="result-list">
         {filteredItems.length > 0 ? (
           filteredItems.map((item, index) => <li key={index}>{item}</li>)

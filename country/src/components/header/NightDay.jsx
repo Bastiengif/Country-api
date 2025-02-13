@@ -1,28 +1,39 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { Moon, Sun } from 'lucide-react';
 
-export default function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
+const NightDay = () => {
+  const [darkMode, setDarkMode] = useState(() => 
+    localStorage.getItem('theme') === 'dark'
   );
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
 
   return (
-    <div className="flex justify-center items-center">
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="px-4 py-2 text-white w-auto inline-block mr-25"
-      >
-        {darkMode ? "Light" : "Dark"}
-      </button>
-    </div>
+    <button
+      onClick={() => setDarkMode(!darkMode)}
+      className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-800 dark:bg-slate-700 text-white hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-200"
+    >
+      {darkMode ? (
+        <>
+          <Sun className="w-5 h-5" />
+          <span>Light Mode</span>
+        </>
+      ) : (
+        <>
+          <Moon className="w-5 h-5" />
+          <span>Dark Mode</span>
+        </>
+      )}
+    </button>
   );
-}
+};
+
+export default NightDay;

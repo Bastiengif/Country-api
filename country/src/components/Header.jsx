@@ -1,13 +1,13 @@
-import { Helmet } from "react-helmet-async";
+import React from 'react';
 
 const Head = () => {
   return (
     <Helmet>
-      <title>Where is the world</title>
-      <meta name="description" content="Ceci est une description pour le SEO." />
-      <meta name="keywords" content="React, SEO, Helmet" />
-      <meta name="author" content="Ton Nom" />
-      <link rel="icon" href="/favicon.ico" />
+      <title>Where in the World? | Country Explorer</title>
+      <meta name="description" content="Explore countries around the world, their flags, populations, and more." />
+      <meta name="keywords" content="countries, world, flags, population, capitals, regions" />
+      <meta name="author" content="Country Explorer" />
+      <link rel="icon" href="/vite.svg" />
     </Helmet>
   );
 };
