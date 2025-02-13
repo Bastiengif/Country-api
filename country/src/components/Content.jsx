@@ -1,26 +1,22 @@
-import React from "react";
-import "./content.css";
+import React, { useState, useEffect } from "react";
 
-const Content = ({ searchTerm }) => {
-  // Exemple de données à filtrer
-  const items = ["React", "JavaScript", "HTML", "CSS", "Node.js", "Vue.js"];
+const Content = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [countries, setCountries] = useState([]);
 
-  // Filtrer les éléments en fonction de la recherche
-  const filteredItems = items.filter((item) =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    fetch('https://restcountries.com/v3.1/all')
+      .then(response => response.json())
+      .then(data => {
+        const sortedCountries = data.sort((a, b) => 
+          a.name.common.localeCompare(b.name.common)
+        );
+        setCountries(sortedCountries);
+      })
+      .catch(error => console.error('Error fetching countries:', error));
+  }, []);
 
-  return (
-    <div className="content-container">
-      <ul className="result-list">
-        {filteredItems.length > 0 ? (
-          filteredItems.map((item, index) => <li key={index}>{item}</li>)
-        ) : (
-          <li>Aucun résultat trouvé</li>
-        )}
-      </ul>
-    </div>
+  const filteredCountries = countries.filter((country) =>
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   );
 };
-
-export default Content;

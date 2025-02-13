@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import "./searchbar.css";
+import React from 'react';
+import { Search } from 'lucide-react';
 
-const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    if (onSearch) onSearch(e.target.value); // Appel du callback pour filtrer les résultats
-  };
-
+const SearchBar = ({ searchTerm, onSearchChange }) => {
   return (
-    <div className="search-container">
+    <div className="relative w-full max-w-md">
+      <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+        <Search className="h-5 w-5 text-gray-400" />
+      </div>
       <input
         type="text"
-        className="search-input"
         placeholder="Rechercher un pays..."
         value={searchTerm}
-        onChange={handleChange}
+        onChange={(e) => onSearchChange(e.target.value)}
+        className="w-full pl-10 pr-4 py-3 bg-[#2B3743] dark:bg-white text-white dark:text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );
